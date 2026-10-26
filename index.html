@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Ajar Interaktif IPA - Pemuaian</title>
+    <!-- Tailwind CSS untuk Styling Responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            100: '#FAF6F0',
+                            200: '#F4EAE1',
+                            300: '#EBD9C8',
+                            400: '#E0C7B1',
+                        },
+                        brown: {
+                            500: '#A67C52',
+                            600: '#8C6239',
+                            700: '#6F4E2B',
+                            800: '#53391F',
+                            900: '#382512',
+                        },
+                        warmAccent: '#D97724',
+                        coolAccent: '#4A7C59'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAF6F0;
+            color: #382512;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .bg-soft-cream {
+            background-color: #F4EAE1;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(224, 199, 177, 0.5);
+        }
+        .nav-btn.active {
+            background-color: #8C6239;
+            color: white;
+            box-shadow: 0 4px 12px rgba(140, 98, 57, 0.25);
+        }
+        /* Custom Smooth Range Slider */
+        input[type=range] {
+            accent-color: #8C6239;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brown-500 selection:text-white">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="bg-cream-200/90 backdrop-blur-md sticky top-0 z-50 border-b border-cream-300 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row justify-between items-center gap-3">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-brown-600 flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    <i class="fa-solid fa-temperature-arrow-up"></i>
+                </div>
+                <div>
+                    <h1 class="font-heading font-bold text-lg sm:text-xl text-brown-900 leading-tight">PEMUAIAN ZAT</h1>
+                    <p class="text-xs text-brown-700 font-medium">IPA Kelas VII MTs/SMP</p>
+                </div>
+            </div>
+
+            <!-- Identitas Penyusun -->
+            <div class="text-center md:text-right bg-cream-100/80 px-3 py-1.5 rounded-lg border border-cream-300">
+                <p class="text-xs font-semibold text-brown-800">Disusun oleh:</p>
+                <p class="text-xs text-brown-700 font-medium"><span class="font-bold">Khuzaimatul Fitriyah, S.Si., M.Si.</span></p>
+                <p class="text-[10px] text-brown-600">Guru IPA MTsN 1 Kota Malang</p>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-2 pb-2">
+            <div class="flex space-x-1 sm:space-x-2 overflow-x-auto pb-1 scrollbar-none text-xs sm:text-sm">
+                <button onclick="switchTab('pendahuluan')" id="tab-pendahuluan" class="nav-btn active px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-house"></i> Pendahuluan
+                </button>
+                <button onclick="switchTab('materi')" id="tab-materi" class="nav-btn px-4 py-2 rounded-lg font-medium text-brown-800 hover:bg-cream-300 transition-all duration-200 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-book-open"></i> Materi & Rumus
+                </button>
+                <button onclick="switchTab('lab')" id="tab-lab" class="nav-btn px-4 py-2 rounded-lg font-medium text-brown-800 hover:bg-cream-300 transition-all duration-200 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-flask"></i> Lab Virtual
+                </button>
+                <button onclick="switchTab('game')" id="tab-game" class="nav-btn px-4 py-2 rounded-lg font-medium text-brown-800 hover:bg-cream-300 transition-all duration-200 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-chess-knight"></i> Menara Game
+                </button>
+                <button onclick="switchTab('quiz')" id="tab-quiz" class="nav-btn px-4 py-2 rounded-lg font-medium text-brown-800 hover:bg-cream-300 transition-all duration-200 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-pen-to-square"></i> Kuis Interaktif
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
+
+        <!-- SECTION 1: PENDAHULUAN -->
+        <section id="sec-pendahuluan" class="tab-content block space-y-6">
+            <div class="bg-gradient-to-r from-cream-200 to-cream-300 rounded-2xl p-6 md:p-8 shadow-sm border border-cream-400">
+                <div class="max-w-3xl">
+                    <span class="inline-block px-3 py-1 bg-brown-600 text-white text-xs font-semibold rounded-full mb-3">Mata Pelajaran IPA - Fase D</span>
+                    <h2 class="font-heading text-2xl md:text-3xl font-bold text-brown-900 mb-3">Selamat Datang di Media Pembelajaran Interaktif Pemuaian!</h2>
+                    <p class="text-brown-800 leading-relaxed mb-4 text-sm md:text-base">
+                        Pernahkah kalian mengamati kabel listrik di pinggir jalan yang tampak lebih kendur pada siang hari yang terik, atau mendengar bunyi 'klek' pada rel kereta api? Fenomena-fenomena tersebut berkaitan erat dengan konsep <strong>Pemuaian</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Capaian & Tujuan -->
+                <div class="glass-card rounded-2xl p-6 shadow-sm border border-cream-300">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-warmAccent/20 text-warmAccent flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="font-heading text-lg font-bold text-brown-900">Tujuan Pembelajaran</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-brown-800">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-coolAccent mt-1"></i>
+                            <span>Menjelaskan konsep pemuaian pada zat padat, cair, dan gas dalam kehidupan sehari-hari.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-coolAccent mt-1"></i>
+                            <span>Menganalisis hubungan antara perubahan suhu dengan pertambahan panjang, luas, atau volume zat.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-coolAccent mt-1"></i>
+                            <span>Menghitung pemuaian panjang pada zat padat menggunakan rumus matematika yang tepat.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-coolAccent mt-1"></i>
+                            <span>Mengidentifikasi pemanfaatan dan penanganan dampak pemuaian dalam teknologi dan kehidupan.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Petunjuk Penggunaan -->
+                <div class="glass-card rounded-2xl p-6 shadow-sm border border-cream-300">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-brown-600/20 text-brown-700 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <h3 class="font-heading text-lg font-bold text-brown-900">Petunjuk Belajar</h3>
+                    </div>
+                    <ol class="space-y-3 text-sm text-brown-800 list-decimal list-inside">
+                        <li class="pl-1">Pelajari ringkasan materi dan penjelasan rumus pada menu <strong>Materi & Rumus</strong>.</li>
+                        <li class="pl-1">Lakukan eksperimen mandiri di menu <strong>Lab Virtual</strong> untuk memvisualisasikan pemuaian.</li>
+                        <li class="pl-1">Uji tantangan di menu <strong>Menara Game</strong> untuk menguji ketangkasan pemahamanmu.</li>
+                        <li class="pl-1">Selesaikan 10 soal pada menu <strong>Kuis Interaktif</strong> untuk mengukur tingkat pemahamanmu (LOTS, MOTS, HOTS).</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: MATERI & RUMUS -->
+        <section id="sec-materi" class="tab-content hidden space-y-6">
+            <div class="bg-cream-200 rounded-2xl p-6 border border-cream-300 shadow-sm">
+                <h2 class="font-heading text-xl md:text-2xl font-bold text-brown-900 mb-2">Konsep Dasar Pemuaian</h2>
+                <p class="text-sm text-brown-800 leading-relaxed">
+                    <strong>Pemuaian</strong> adalah bertambahnya ukuran suatu benda (panjang, luas, atau volume) akibat kenaikan suhu. Sebaliknya, jika suhu menurun, benda akan mengalami <strong>penyusutan</strong>.
+                </p>
+            </div>
+
+            <!-- Pemuaian Zat Padat -->
+            <div class="glass-card rounded-2xl p-6 shadow-sm border border-cream-300">
+                <h3 class="font-heading text-lg font-bold text-brown-900 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-[#8C6239] fa-ruler-horizontal text-brown-600"></i> 1. Pemuaian Panjang (Zat Padat)
+                </h3>
+                <p class="text-sm text-brown-800 mb-4">
+                    Terjadi pada benda padat yang ukurannya dominan memanjang (seperti kawat atau batang logam).
+                </p>
+
+                <!-- Box Rumus Pemuaian Panjang -->
+                <div class="bg-cream-100 p-4 rounded-xl border border-cream-300 my-4 space-y-3">
+                    <p class="text-xs font-semibold text-brown-600 uppercase tracking-wider">Rumus Pemuaian Panjang:</p>
+                    <div class="text-center font-mono text-base md:text-lg font-bold text-brown-900 py-2 bg-white rounded-lg border border-cream-300 shadow-inner">
+                        ΔL = L0 × α × ΔT
+                    </div>
+                    <div class="text-center font-mono text-base md:text-lg font-bold text-brown-900 py-2 bg-white rounded-lg border border-cream-300 shadow-inner">
+                        Lt = L0 + ΔL &nbsp;&rarr;&nbsp; Lt = L0 (1 + α × ΔT)
+                    </div>
+                    
+                    <div class="text-xs text-brown-800 space-y-1 pt-2 border-t border-cream-200">
+                        <p><strong>Keterangan:</strong></p>
+                        <p>• <strong>ΔL</strong> = Pertambahan panjang (m atau cm)</p>
+                        <p>• <strong>L0</strong> = Panjang awal benda (m atau cm)</p>
+                        <p>• <strong>Lt</strong> = Panjang akhir setelah dipanaskan (m atau cm)</p>
+                        <p>• <strong>α (Alpha)</strong> = Koefisien muai panjang (/°C)</p>
+                        <p>• <strong>ΔT</strong> = Perubahan suhu = T_akhir - T_awal (°C)</p>
+                    </div>
+                </div>
+
+                <!-- Contoh Soal Konkret -->
+                <div class="bg-brown-600/5 p-4 rounded-xl border border-brown-600/20 mt-4">
+                    <h4 class="font-bold text-sm text-brown-900 mb-2"><i class="fa-solid fa-lightbulb text-warmAccent mr-1"></i> Contoh Soal & Pembahasan:</h4>
+                    <p class="text-xs text-brown-800 mb-2">
+                        Sebatang kawat tembaga memiliki panjang awal 100 cm pada suhu 30°C. Kawat tersebut dipanaskan hingga suhunya mencapai 80°C. Jika koefisien muai panjang tembaga adalah 0.000017 /°C, berapakah pertambahan panjang kawat tersebut?
+                    </p>
+                    <div class="bg-white p-3 rounded-lg text-xs space-y-1 font-mono text-brown-900 border border-cream-300">
+                        <p><strong>Diketahui:</strong> L0 = 100 cm | T1 = 30°C, T2 = 80°C &rarr; ΔT = 50°C | α = 0.000017 /°C</p>
+                        <p><strong>Ditanya:</strong> ΔL ?</p>
+                        <p><strong>Jawab:</strong></p>
+                        <p>ΔL = L0 × α × ΔT</p>
+                        <p>ΔL = 100 × 0.000017 × 50</p>
+                        <p>ΔL = 100 × 0.00085 = <strong>0.085 cm</strong></p>
+                        <p class="text-coolAccent font-sans font-semibold mt-1">Jadi, kawat bertambah panjang sebesar 0.085 cm (Panjang akhir = 100.085 cm).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pemuaian Luas dan Volume -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-card rounded-2xl p-6 shadow-sm border border-cream-300">
+                    <h3 class="font-heading text-lg font-bold text-brown-900 mb-2">2. Pemuaian Luas</h3>
+                    <p class="text-xs text-brown-800 mb-3">Terjadi pada lempengan atau pelat tipis (memiliki panjang dan lebar).</p>
+                    <div class="bg-cream-100 p-3 rounded-xl border border-cream-300 font-mono text-xs text-center font-bold mb-3">
+                        ΔA = A0 × β × ΔT <br>
+                        <span class="text-[11px] font-sans font-normal text-brown-700">(di mana β = 2 × α)</span>
+                    </div>
+                    <p class="text-xs text-brown-700">Contoh: Pemuaian pada kaca jendela yang membesar saat cuaca panas.</p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 shadow-sm border border-cream-300">
+                    <h3 class="font-heading text-lg font-bold text-brown-900 mb-2">3. Pemuaian Volume</h3>
+                    <p class="text-xs text-brown-800 mb-3">Terjadi pada benda 3 dimensi (zat padat, cair, dan gas).</p>
+                    <div class="bg-cream-100 p-3 rounded-xl border border-cream-300 font-mono text-xs text-center font-bold mb-3">
+                        ΔV = V0 × γ × ΔT <br>
+                        <span class="text-[11px] font-sans font-normal text-brown-700">(di mana γ = 3 × α)</span>
+                    </div>
+                    <p class="text-xs text-brown-700">Contoh: Air mendidih meluap dari panci, balok besi membesar.</p>
+                </div>
+            </div>
+
+            <!-- Anomali Air & Contoh Sehari-hari -->
+            <div class="glass-card rounded-2xl p-6 shadow-sm border border-cream-300 space-y-4">
+                <h3 class="font-heading text-lg font-bold text-brown-900">Pemanfaatan & Penerapan Pemuaian</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                    <div class="p-3 bg-cream-100 rounded-xl border border-cream-300">
+                        <div class="font-bold text-brown-900 mb-1"><i class="fa-solid fa-temperature-high text-warmAccent"></i> Bimetal</div>
+                        <p class="text-brown-700">Dua logam berbeda koefisien muai yang direkatkan. Digunakan sebagai saklar otomatis pada setrika listrik.</p>
+                    </div>
+                    <div class="p-3 bg-cream-100 rounded-xl border border-cream-300">
+                        <div class="font-bold text-brown-900 mb-1"><i class="fa-solid fa-train text-brown-700"></i> Celah Rel Kereta</div>
+                        <p class="text-brown-700">Sambungan rel kereta diberi celah agar saat memuai di siang hari, rel tidak membengkok.</p>
+                    </div>
+                    <div class="p-3 bg-cream-100 rounded-xl border border-cream-300">
+                        <div class="font-bold text-brown-900 mb-1"><i class="fa-solid fa-droplet text-blue-600"></i> Anomali Air</div>
+                        <p class="text-brown-700">Pengecualian sifat air: pada suhu 0°C sampai 4°C air justru menyusut jika dipanaskan (mencapai massa jenis tertinggi di 4°C).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: LABORATORIUM VIRTUAL IPA -->
+        <section id="sec-lab" class="tab-content hidden space-y-6">
+            <div class="bg-cream-200 rounded-2xl p-6 border border-cream-300 shadow-sm">
+                <h2 class="font-heading text-xl md:text-2xl font-bold text-brown-900 mb-1">Laboratorium Virtual: Simulasi Pemuaian Batang Logam</h2>
+                <p class="text-xs md:text-sm text-brown-800">
+                    Geser pemanas suhu di bawah untuk melihat pemuaian luwes pada logam tanpa titik bergeraknya!
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Panel Kontrol Simulasi -->
+                <div class="glass-card rounded-2xl p-6 border border-cream-300 shadow-sm space-y-5">
+                    <h3 class="font-heading font-bold text-brown-900 text-base border-b border-cream-300 pb-2">Kontrol Eksperimen</h3>
+                    
+                    <!-- Pilih Jenis Logam -->
+                    <div>
+                        <label class="block text-xs font-semibold text-brown-800 mb-2">Pilih Jenis Logam:</label>
+                        <select id="sim-metal" onchange="updateSimulation()" class="w-full bg-white border border-cream-300 rounded-xl px-3 py-2 text-xs font-medium text-brown-900 focus:outline-none focus:ring-2 focus:ring-brown-600">
+                            <option value="0.000024">Aluminium (α = 0.000024 /°C)</option>
+                            <option value="0.000019">Kuningan (α = 0.000019 /°C)</option>
+                            <option value="0.000017" selected>Tembaga (α = 0.000017 /°C)</option>
+                            <option value="0.000012">Besi / Baja (α = 0.000012 /°C)</option>
+                        </select>
+                    </div>
+
+                    <!-- Panjang Awal -->
+                    <div>
+                        <label class="block text-xs font-semibold text-brown-800 mb-1">Panjang Awal (L0): <span id="val-l0" class="font-bold text-brown-900">100 cm</span></label>
+                        <input type="range" id="sim-l0" min="50" max="200" value="100" oninput="updateSimulation()" class="w-full h-2 bg-cream-300 rounded-lg appearance-none cursor-pointer">
+                    </div>
+
+                    <!-- Pengatur Suhu -->
+                    <div>
+                        <label class="block text-xs font-semibold text-brown-800 mb-1">Suhu Lingkungan / Pemanas (T): <span id="val-temp" class="font-bold text-warmAccent">25 °C</span></label>
+                        <input type="range" id="sim-temp" min="25" max="300" value="25" oninput="updateSimulation()" class="w-full h-2 bg-cream-300 rounded-lg appearance-none cursor-pointer">
+                    </div>
+
+                    <!-- Output Hasil Pengukuran -->
+                    <div class="bg-cream-100 p-4 rounded-xl border border-cream-300 space-y-2 text-xs">
+                        <div class="flex justify-between">
+                            <span class="text-brown-700">Suhu Awal (T0):</span>
+                            <span class="font-bold text-brown-900">25 °C</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-brown-700">Perubahan Suhu (ΔT):</span>
+                            <span id="val-deltat" class="font-bold text-brown-900">0 °C</span>
+                        </div>
+                        <div class="flex justify-between border-t border-cream-300 pt-2">
+                            <span class="text-brown-700">Pertambahan Panjang (ΔL):</span>
+                            <span id="val-deltal" class="font-bold text-warmAccent">0.000 cm</span>
+                        </div>
+                        <div class="flex justify-between font-bold text-sm text-brown-900 border-t border-cream-300 pt-2">
+                            <span>Panjang Total (Lt):</span>
+                            <span id="val-lt">100.000 cm</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Canvas Visualisasi Simulasi -->
+                <div class="lg:col-span-2 glass-card rounded-2xl p-6 border border-cream-300 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-heading font-bold text-brown-900 text-base">Visualisasi Pemuaian Logam</h3>
+                            <span class="text-[11px] bg-cream-200 text-brown-800 px-2 py-1 rounded border border-cream-300">Skala diperbesar untuk kejelasan visual</span>
+                        </div>
+                        
+                        <!-- Visual Container Canvas -->
+                        <div class="relative w-full h-64 bg-cream-100 rounded-xl border border-cream-300 overflow-hidden flex flex-col justify-center items-center p-4">
+                            <!-- Visual Api / Pemanas (SVG Luwes) -->
+                            <div id="flame-container" class="absolute bottom-6 flex justify-center items-center gap-4 transition-opacity duration-300 opacity-0">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" class="animate-bounce">
+                                    <path d="M12 2C10 7 6 9 6 14C6 17.31 8.69 20 12 20C15.31 20 18 17.31 18 14C18 9 14 7 12 2Z" fill="#D97724"/>
+                                    <path d="M12 8C11 11 9 12 9 15C9 16.66 10.34 18 12 18C13.66 18 15 16.66 15 15C15 12 13 11 12 8Z" fill="#F59E0B"/>
+                                </svg>
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" class="animate-bounce delay-100">
+                                    <path d="M12 2C10 7 6 9 6 14C6 17.31 8.69 20 12 20C15.31 20 18 17.31 18 14C18 9 14 7 12 2Z" fill="#D97724"/>
+                                    <path d="M12 8C11 11 9 12 9 15C9 16.66 10.34 18 12 18C13.66 18 15 16.66 15 15C15 12 13 11 12 8Z" fill="#F59E0B"/>
+                                </svg>
+                            </div>
+
+                            <!-- Dinding Penahan Kiri -->
+                            <div class="absolute left-6 h-32 w-4 bg-brown-800 rounded-l-md z-10 flex items-center justify-center">
+                                <span class="text-[9px] text-cream-100 -rotate-90 font-bold">TETAP</span>
+                            </div>
+
+                            <!-- Batang Logam Utama (Luwes & Smooth transition) -->
+                            <div class="relative w-full pl-8 pr-12 flex items-center h-20">
+                                <div id="metal-bar" class="h-10 bg-gradient-to-r from-brown-600 via-brown-500 to-brown-700 rounded-r-lg shadow-md transition-all duration-300 ease-out flex items-center justify-end pr-2 text-white font-mono text-xs font-bold" style="width: 60%;">
+                                    <span id="bar-label" class="drop-shadow">100 cm</span>
+                                </div>
+                                <!-- Indikator Pemuaian (Delta L) -->
+                                <div id="expansion-indicator" class="h-10 bg-warmAccent/80 rounded-r-lg border-r-2 border-warmAccent transition-all duration-300 ease-out hidden"></div>
+                            </div>
+
+                            <!-- Skala Penggaris Bawah -->
+                            <div class="w-full pl-8 pr-12 mt-4 flex justify-between text-[10px] text-brown-700 font-mono border-t border-brown-500/30 pt-1">
+                                <span>0 cm</span>
+                                <span>50 cm</span>
+                                <span>100 cm</span>
+                                <span>150 cm</span>
+                                <span>200 cm</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kesimpulan Otomatis -->
+                    <div class="mt-4 p-3 bg-cream-200 rounded-xl border border-cream-300 text-xs text-brown-800">
+                        <span class="font-bold text-brown-900"><i class="fa-solid fa-circle-info text-brown-600"></i> Catatan Analisis:</span>
+                        <span id="sim-analysis">Semakin tinggi perubahan suhu (ΔT) dan semakin besar koefisien muai panjang (α), maka pemuaian panjang (ΔL) akan semakin besar.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: MENARA GAME -->
+        <section id="sec-game" class="tab-content hidden space-y-6">
+            <div class="bg-cream-200 rounded-2xl p-6 border border-cream-300 shadow-sm text-center">
+                <h2 class="font-heading text-xl md:text-2xl font-bold text-brown-900 mb-1">Menara Game Pemuaian</h2>
+                <p class="text-xs md:text-sm text-brown-800">
+                    Susun blok pemahamanmu hingga puncak menara dengan menjawab pertanyaan singkat secara benar!
+                </p>
+            </div>
+
+            <div class="max-w-2xl mx-auto glass-card rounded-2xl p-6 border border-cream-300 shadow-sm text-center space-y-6">
+                <!-- Visual Menara -->
+                <div class="flex flex-col-reverse items-center justify-center gap-2 min-h-[220px] p-4 bg-cream-100 rounded-xl border border-cream-300">
+                    <div id="tower-block-1" class="w-48 py-2 bg-cream-300 text-brown-800 rounded-lg text-xs font-bold border border-cream-400 transition-all duration-300 opacity-40">
+                        Lantai 1: Konsep Dasar
+                    </div>
+                    <div id="tower-block-2" class="w-40 py-2 bg-cream-300 text-brown-800 rounded-lg text-xs font-bold border border-cream-400 transition-all duration-300 opacity-40">
+                        Lantai 2: Pemuaian Zat
+                    </div>
+                    <div id="tower-block-3" class="w-32 py-2 bg-cream-300 text-brown-800 rounded-lg text-xs font-bold border border-cream-400 transition-all duration-300 opacity-40">
+                        Lantai 3: Penerapan
+                    </div>
+                    <div id="tower-block-4" class="w-24 py-2 bg-cream-300 text-brown-800 rounded-lg text-xs font-bold border border-cream-400 transition-all duration-300 opacity-40">
+                        Puncak Menara
+                    </div>
+                </div>
+
+                <!-- Soal Tantangan Game -->
+                <div id="game-card" class="bg-white p-5 rounded-xl border border-cream-300 text-left space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span id="game-level-tag" class="text-xs font-bold bg-warmAccent/20 text-warmAccent px-2 py-1 rounded">Tantangan Lantai 1</span>
+                        <span id="game-score" class="text-xs font-semibold text-brown-700">Skor: 0</span>
+                    </div>
+                    <p id="game-question" class="text-sm font-semibold text-brown-900">Pertanyaan game akan muncul di sini...</p>
+                    <div id="game-options" class="grid grid-cols-1 gap-2 pt-2">
+                        <!-- Pilihan tombol dimasukkan via JS -->
+                    </div>
+                </div>
+
+                <button onclick="resetGame()" class="px-4 py-2 bg-brown-600 text-white rounded-xl text-xs font-bold hover:bg-brown-700 transition">
+                    <i class="fa-solid fa-rotate-right mr-1"></i> Ulangi Game Menara
+                </button>
+            </div>
+        </section>
+
+        <!-- SECTION 5: KUIS INTERAKTIF HOTS, MOTS, LOTS -->
+        <section id="sec-quiz" class="tab-content hidden space-y-6">
+            <div class="bg-cream-200 rounded-2xl p-6 border border-cream-300 shadow-sm flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>
+                    <h2 class="font-heading text-xl md:text-2xl font-bold text-brown-900 mb-1">Kuis Evaluasi Interaktif</h2>
+                    <p class="text-xs md:text-sm text-brown-800">
+                        10 Soal Variasi LOTS, MOTS, dan HOTS untuk menguji pemahaman komprehensifmu.
+                    </p>
+                </div>
+                <div class="bg-white px-4 py-2 rounded-xl border border-cream-300 text-center">
+                    <span class="text-xs text-brown-600 block">Skor Kamu</span>
+                    <span id="quiz-score-display" class="font-heading font-bold text-xl text-brown-900">0 / 100</span>
+                </div>
+            </div>
+
+            <!-- Quiz Container -->
+            <div id="quiz-container" class="space-y-6">
+                <!-- Dynamic Quiz Content Loaded via JS -->
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center pt-4">
+                <button onclick="calculateQuizScore()" class="px-8 py-3 bg-brown-600 hover:bg-brown-700 text-white font-bold rounded-xl shadow-lg transition duration-200 text-sm">
+                    <i class="fa-solid fa-paper-plane mr-2"></i> Submit & Cek Hasil Kuis
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-cream-200 border-t border-cream-300 py-4 mt-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-brown-700 space-y-1">
+            <p class="font-semibold">Media Ajar Interaktif IPA Kelas VII MTs/SMP - Pemuaian</p>
+            <p>Disusun oleh: <strong>Khuzaimatul Fitriyah, S.Si., M.Si.</strong> (Guru IPA MTsN 1 Kota Malang)</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Tab Navigation Switcher
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.add('text-brown-800');
+            });
+
+            document.getElementById('sec-' + tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('tab-' + tabId);
+            activeBtn.classList.add('active');
+            activeBtn.classList.remove('text-brown-800');
+
+            if(tabId === 'lab') {
+                updateSimulation();
+            }
+        }
+
+        // --- SIMULASI LAB VIRTUAL ---
+        function updateSimulation() {
+            const alpha = parseFloat(document.getElementById('sim-metal').value);
+            const l0 = parseFloat(document.getElementById('sim-l0').value);
+            const temp = parseFloat(document.getElementById('sim-temp').value);
+            
+            const t0 = 25; // Suhu awal acuan
+            const deltaT = Math.max(0, temp - t0);
+            const deltaL = l0 * alpha * deltaT;
+            const lt = l0 + deltaL;
+
+            // Update Text UI
+            document.getElementById('val-l0').innerText = l0 + ' cm';
+            document.getElementById('val-temp').innerText = temp + ' °C';
+            document.getElementById('val-deltat').innerText = deltaT + ' °C';
+            document.getElementById('val-deltal').innerText = deltaL.toFixed(4) + ' cm';
+            document.getElementById('val-lt').innerText = lt.toFixed(4) + ' cm';
+
+            // Visual Adjustments
+            const flameContainer = document.getElementById('flame-container');
+            if (deltaT > 0) {
+                flameContainer.classList.remove('opacity-0');
+                flameContainer.classList.add('opacity-100');
+            } else {
+                flameContainer.classList.remove('opacity-100');
+                flameContainer.classList.add('opacity-0');
+            }
+
+            // Visual bar scaling (normalized width)
+            const basePercent = (l0 / 200) * 75; 
+            const expansionVisualMultiplier = 500; // Pembesaran visual agar pemuaian mikro terlihat
+            const extraPercent = Math.min(20, (deltaL / l0) * expansionVisualMultiplier); 
+
+            const metalBar = document.getElementById('metal-bar');
+            const barLabel = document.getElementById('bar-label');
+            
+            metalBar.style.width = (basePercent + extraPercent) + '%';
+            barLabel.innerText = lt.toFixed(2) + ' cm';
+
+            // Dynamic color shift based on heat
+            if (temp > 150) {
+                metalBar.className = "h-10 bg-gradient-to-r from-warmAccent via-red-500 to-warmAccent rounded-r-lg shadow-md transition-all duration-300 ease-out flex items-center justify-end pr-2 text-white font-mono text-xs font-bold";
+            } else {
+                metalBar.className = "h-10 bg-gradient-to-r from-brown-600 via-brown-500 to-brown-700 rounded-r-lg shadow-md transition-all duration-300 ease-out flex items-center justify-end pr-2 text-white font-mono text-xs font-bold";
+            }
+        }
+
+        // --- MENARA GAME LOGIC ---
+        const gameData = [
+            {
+                level: 1,
+                question: "Apa yang terjadi pada ukuran suatu benda padat ketika suhunya dinaikkan?",
+                options: ["Ukurannya menyusut", "Ukurannya memuai/bertambah", "Massa benda berkurang", "Bentuknya langsung mencair"],
+                answer: 1
+            },
+            {
+                level: 2,
+                question: "Alat yang memanfaatkan perbedaan koefisien muai dua logam (bimetal) pada setrika adalah...",
+                options: ["Termometer Air Raksa", "Saklar Termostat Otomatis", "Radiator Mobil", "Barometer"],
+                answer: 1
+            },
+            {
+                level: 3,
+                question: "Mengapa sambungan rel kereta api sengaja diberi celah longgar?",
+                options: ["Agar hemat bahan besi", "Agar kereta tidak berisik", "Mencegah rel melengkung saat memuai di siang hari", "Agar air hujan bisa mengalir"],
+                answer: 2
+            },
+            {
+                level: 4,
+                question: "Pencapaian Puncak! Mengapa es dapat terapung di atas air ditinjau dari anomali air?",
+                options: ["Karena es tidak memiliki massa", "Suhu es selalu 100°C", "Massa jenis air terkecil pada 4°C", "Pada 0°C volume air membesar sehingga massa jenis es lebih kecil dari air"],
+                answer: 3
+            }
+        ];
+
+        let currentGameLevel = 0;
+        let gameScore = 0;
+
+        function loadGameLevel() {
+            if (currentGameLevel >= gameData.length) {
+                document.getElementById('game-card').innerHTML = `
+                    <div class="text-center py-6 space-y-3">
+                        <i class="fa-solid fa-trophy text-4xl text-warmAccent"></i>
+                        <h3 class="font-heading font-bold text-xl text-brown-900">Selamat! Menara Pemuaian Selesai!</h3>
+                        <p class="text-xs text-brown-800">Kamu berhasil menguasai seluruh tingkat tantangan konsep pemuaian.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const current = gameData[currentGameLevel];
+            document.getElementById('game-level-tag').innerText = `Tantangan Lantai ${current.level}`;
+            document.getElementById('game-score').innerText = `Skor: ${gameScore}`;
+            document.getElementById('game-question').innerText = current.question;
+
+            const optsContainer = document.getElementById('game-options');
+            optsContainer.innerHTML = '';
+
+            current.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left px-4 py-2.5 rounded-xl border border-cream-300 text-xs font-medium hover:bg-cream-200 text-brown-900 transition";
+                btn.innerText = opt;
+                btn.onclick = () => checkGameAnswer(idx);
+                optsContainer.appendChild(btn);
+            });
+
+            // Highlight tower visual
+            for (let i = 1; i <= 4; i++) {
+                const block = document.getElementById(`tower-block-${i}`);
+                if (i <= currentGameLevel + 1) {
+                    block.classList.remove('opacity-40', 'bg-cream-300');
+                    block.classList.add('opacity-100', 'bg-brown-600', 'text-white');
+                }
+            }
+        }
+
+        function checkGameAnswer(selectedIdx) {
+            const current = gameData[currentGameLevel];
+            if (selectedIdx === current.answer) {
+                gameScore += 25;
+                currentGameLevel++;
+                loadGameLevel();
+            } else {
+                alert("Jawaban kurang tepat. Coba pikirkan kembali!");
+            }
+        }
+
+        function resetGame() {
+            currentGameLevel = 0;
+            gameScore = 0;
+            for (let i = 1; i <= 4; i++) {
+                const block = document.getElementById(`tower-block-${i}`);
+                block.className = `w-${56 - i*8} py-2 bg-cream-300 text-brown-800 rounded-lg text-xs font-bold border border-cream-400 transition-all duration-300 opacity-40`;
+            }
+            document.getElementById('game-card').innerHTML = `
+                <div class="flex justify-between items-center">
+                    <span id="game-level-tag" class="text-xs font-bold bg-warmAccent/20 text-warmAccent px-2 py-1 rounded">Tantangan Lantai 1</span>
+                    <span id="game-score" class="text-xs font-semibold text-brown-700">Skor: 0</span>
+                </div>
+                <p id="game-question" class="text-sm font-semibold text-brown-900">Pertanyaan game akan muncul di sini...</p>
+                <div id="game-options" class="grid grid-cols-1 gap-2 pt-2"></div>
+            `;
+            loadGameLevel();
+        }
+
+        // --- KUIS INTERAKTIF DATA (10 SOAL HOTS, MOTS, LOTS) ---
+        const quizQuestions = [
+            {
+                type: "LOTS",
+                q: "1. Bertambahnya ukuran panjang, luas, atau volume suatu benda karena menerima kalor/panas disebut...",
+                options: ["Penguapan", "Pemuaian", "Penyusutan", "Kondensasi"],
+                ans: 1,
+                explain: "Pemuaian adalah peristiwa bertambahnya ukuran benda akibat peningkatan suhu."
+            },
+            {
+                type: "LOTS",
+                q: "2. Alat yang digunakan untuk menyelidiki pemuaian panjang pada berbagai jenis zat padat adalah...",
+                options: ["Thermostat", "Musschenbroek", "Kalorimeter", "Anemometer"],
+                ans: 1,
+                explain: "Musschenbroek adalah alat laboratorium klasik untuk menguji pemuaian panjang batang logam."
+            },
+            {
+                type: "LOTS",
+                q: "3. Satuan Standar Internasional (SI) untuk koefisien muai panjang (α) adalah...",
+                options: ["/°C atau /K", "Joule", "Kg/m³", "Meter/°C"],
+                ans: 0,
+                explain: "Koefisien muai panjang dinyatakan dalam per derajat Celsius (/°C) atau per Kelvin (/K)."
+            },
+            {
+                type: "MOTS",
+                q: "4. Sebuah kawat kuningan panjangnya 2 meter dipanaskan sehingga mengalami kenaikan suhu sebesar 40°C. Jika α kuningan = 0.000019 /°C, pertambahan panjang kawat adalah...",
+                options: ["0.00152 m", "0.00076 m", "0.0152 m", "0.152 m"],
+                ans: 0,
+                explain: "ΔL = L0 × α × ΔT = 2 × 0.000019 × 40 = 0.00152 m."
+            },
+            {
+                type: "MOTS",
+                q: "5. Pemasangan kaca jendela pada bingkainya sengaja diberi celah/ruang sisa. Tujuan utama perancangan ini adalah...",
+                options: ["Agar kaca tidak mudah pecah saat memuai di siang hari", "Agar angin mudah masuk ke dalam rumah", "Memudahkan proses pembersihan kaca", "Menghemat biaya bahan bingkai"],
+                ans: 0,
+                explain: "Celah mencegah kaca menekan bingkai secara berlebihan saat memuai karena panas matahari."
+            },
+            {
+                type: "MOTS",
+                q: "6. Hubungan antara koefisien muai volume (γ) dengan koefisien muai panjang (α) pada zat padat homogen adalah...",
+                options: ["γ = α", "γ = 2 × α", "γ = 3 × α", "γ = 1/3 × α"],
+                ans: 2,
+                explain: "Pemuaian volume terjadi pada 3 dimensi (panjang, lebar, tinggi), sehingga γ = 3α."
+            },
+            {
+                type: "MOTS",
+                q: "7. Mengapa balon udara panas dapat membumbung naik ke angkasa?",
+                options: ["Udara di dalam balon memuai sehingga massa jenisnya menjadi lebih kecil dari udara sekitar", "Udara di dalam balon bertambah berat", "Suhu dingin menarik balon ke atas", "Sifat magnetik udara panas"],
+                ans: 0,
+                explain: "Saat dipanaskan, volume udara memuai sehingga massa jenisnya turun, membuat balon terangkat."
+            },
+            {
+                type: "HOTS",
+                q: "8. Sekeping bimetal terdiri dari Logam A (α = 0.000024 /°C) dan Logam B (α = 0.000012 /°C) yang direkatkan. Jika bimetal tersebut dipanaskan, arah lengkungannya adalah...",
+                options: ["Membengkok ke arah Logam A", "Membengkok ke arah Logam B", "Tetap lurus tidak berubah", "Terputus menjadi dua bagian"],
+                ans: 1,
+                explain: "Saat dipanaskan, bimetal membengkok ke arah logam yang memiliki koefisien muai lebih kecil (Logam B)."
+            },
+            {
+                type: "HOTS",
+                q: "9. Fenomena anomali air terjadi pada rentang suhu 0°C hingga 4°C. Dampak ekologis penting dari anomali air bagi kehidupan akuatik di daerah bermusim dingin adalah...",
+                options: ["Seluruh dasar dan permukaan danau membeku total", "Air danau bagian bawah tetap berwujud cair pada suhu 4°C sehingga ikan tetap hidup", "Air danau menguap seluruhnya saat musim dingin", "Ikan membeku di permukaan namun tetap hidup"],
+                ans: 1,
+                explain: "Air mencapai massa jenis tertinggi di 4°C dan tenggelam ke dasar, menjaga air dasar danau tidak membeku."
+            },
+            {
+                type: "HOTS",
+                q: "10. Dua buah batang logam X dan Y memiliki panjang awal sama. Ketika keduanya dipanaskan dengan perubahan suhu yang sama, batang X bertambah panjang dua kali lipat dibanding batang Y. Kesimpulan analisis yang tepat adalah...",
+                options: ["Koefisien muai panjang X sama dengan Y", "Koefisien muai panjang X adalah setengah dari Y", "Koefisien muai panjang X adalah dua kali dari Y", "Massa batang X dua kali lebih ringan dari Y"],
+                ans: 2,
+                explain: "Karena ΔL sebanding lurus dengan α (ΔL = L0 × α × ΔT), maka pertambahan panjang 2x berarti nilai α juga 2x."
+            }
+        ];
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+
+            quizQuestions.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-2xl p-5 border border-cream-300 shadow-sm space-y-3";
+                
+                let badgeColor = "bg-blue-100 text-blue-800";
+                if(q.type === "MOTS") badgeColor = "bg-amber-100 text-amber-800";
+                if(q.type === "HOTS") badgeColor = "bg-rose-100 text-rose-800";
+
+                let optionsHTML = '';
+                q.options.forEach((opt, optIdx) => {
+                    optionsHTML += `
+                        <label class="flex items-center gap-3 p-2.5 rounded-xl border border-cream-300 bg-white/80 hover:bg-cream-100 cursor-pointer text-xs font-medium text-brown-900 transition">
+                            <input type="radio" name="q_${idx}" value="${optIdx}" class="text-brown-600 focus:ring-brown-500">
+                            <span>${opt}</span>
+                        </label>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${badgeColor}">${q.type}</span>
+                        <span class="text-xs text-brown-600 font-medium">Soal ${idx + 1} dari 10</span>
+                    </div>
+                    <p class="text-xs sm:text-sm font-semibold text-brown-900 leading-relaxed">${q.q}</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                        ${optionsHTML}
+                    </div>
+                    <div id="explain_${idx}" class="hidden p-3 rounded-xl bg-cream-200 border border-cream-300 text-xs text-brown-800 mt-2">
+                        <strong>Pembahasan:</strong> ${q.explain}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function calculateQuizScore() {
+            let correctCount = 0;
+
+            quizQuestions.forEach((q, idx) => {
+                const selected = document.querySelector(`input[name="q_${idx}"]:checked`);
+                const explainBox = document.getElementById(`explain_${idx}`);
+                explainBox.classList.remove('hidden');
+
+                if (selected && parseInt(selected.value) === q.ans) {
+                    correctCount++;
+                    explainBox.classList.add('border-coolAccent/50', 'bg-emerald-50');
+                } else {
+                    explainBox.classList.add('border-warmAccent/50', 'bg-rose-50');
+                }
+            });
+
+            const finalScore = correctCount * 10;
+            document.getElementById('quiz-score-display').innerText = `${finalScore} / 100`;
+
+            alert(`Kuis Selesai!\nSkor Anda: ${finalScore}\n\nSilakan cek pembahasan di bawah setiap soal.`);
+        }
+
+        // Initialize Page
+        window.onload = function() {
+            updateSimulation();
+            loadGameLevel();
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
